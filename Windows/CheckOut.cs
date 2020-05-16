@@ -62,16 +62,21 @@ namespace HotelAccounting.Windows
                                 room = (string)cell.Value;
                             }
                         }
+                        
+
+                        Reservations.List.ForEach(x =>
+                        {
+                            if(x.DateIn.Date == dateIn.Date && x.DateOut.Date == dateOut.Date && x.Room.Number == room)
+                            {
+                                dataGridView1.Rows.Remove(row);
+                                x.Type = Constants.HotelConstants.ReservationType[Constants.HotelConstants.ReservationTypes.Out];
+                            }
+                        });
                     }
                 }
-
-                Reservations.List.ForEach(x =>
-                {
-                    if(x.DateIn.Date == dateIn.Date && x.DateOut.Date == dateOut.Date && x.Room.Number == room)
-                    {
-                        x.Type = Constants.HotelConstants.ReservationType[Constants.HotelConstants.ReservationTypes.Out];
-                    }
-                });
+                
+                dataGridView1.Update();
+                dataGridView1.Refresh();
             }
         }
 
