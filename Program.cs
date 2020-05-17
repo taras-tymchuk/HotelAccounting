@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HotelAccounting.Windows;
 
 namespace HotelAccounting
 {
@@ -16,7 +17,7 @@ namespace HotelAccounting
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            Application.Run(new CheckIn());
         }
     }
 }
